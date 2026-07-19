@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DineTech - Agence Web & Solutions Digitales au Bénin. Création de sites professionnels, réparation informatique, maintenance IT à Djougou.">
+    <meta name="keywords" content="DineTech, création site web Bénin, agence digitale Djougou, développement web, design graphique, réparation informatique">
+    <meta name="author" content="Chérif-Dine | DineTech">
+    <meta property="og:title" content="DineTech | Agence Web & Solutions Digitales">
+    <meta property="og:description" content="Création de sites professionnels pour ONG, PME et institutions au Bénin.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>DineTech | Agence Web & Solutions Digitales au Bénin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0E5AA7;
+            --primary-light: #0B7FD7;
+            --dark: #0a1428;
+            --darker: #051017;
+            --text-light: #e0e0e0;
+            --text-lighter: #ffffff;
+            --accent: #00d4ff;
+            --accent-secondary: #ff6b35;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, #0d1b2a 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 16, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(14, 90, 167, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-lighter);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(14, 90, 167, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 90, 167, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            header {
+                padding: 0.8rem 1rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ========== PARTICLES ========== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 90, 167, 0.2) 0%, transparent 70%);
+            animation: float-blob 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: float-blob-reverse 10s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float-blob {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -50px); }
+        }
+
+        @keyframes float-blob-reverse {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(14, 90, 167, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: rotate-logo 10s linear infinite;
+        }
+
+        @keyframes rotate-logo {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(360deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-lighter) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -2px;
+            animation: fade-in-up 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fade-in-up 1s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fade-in-up 1s ease 0.4s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text-lighter);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(14, 90, 167, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(14, 90, 167, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-lighter);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(14, 90, 167, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fade-in-up 1s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-description {
+            background: rgba(14, 90, 167, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        /* ========== PROJECTS SECTION ========== */
+        .projects {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: rgba(14, 90, 167, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            perspective: 1000px;
+            animation: fade-in-up 0.8s ease;
+        }
+
+        .project-card:hover {
+            transform: rotateY(5deg) rotateX(-5deg) translateY(-15px);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-header {
+            padding: 2rem;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(14, 90, 167, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+            animation: float-blob 10s ease-in-out infinite;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-link::after {
+            content: ' →';
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* ========== SKILLS GALAXY ========== */
+        .skills {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .galaxy-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .galaxy-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 40px var(--accent), 0 0 80px rgba(0, 212, 255, 0.3);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .skill-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .skill-star {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(14, 90, 167, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .skill-star:hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .skill-label {
+            position: absolute;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            white-space: nowrap;
+            margin-top: 70px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-star:hover + .skill-label {
+            opacity: 1;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(14, 90, 167, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fade-in-up 0.8s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-lighter);
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-content {
+            background: rgba(14, 90, 167, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent);
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-method a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            position: relative;
+            z-index: 2;
+            background: rgba(5, 16, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(14, 90, 167, 0.2);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-credit {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-credit a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-credit a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                transform: none !important;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-method {
+                justify-content: center;
+            }
+
+            .galaxy-container {
+                aspect-ratio: auto;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="DineTech" style="width: 35px; height: 35px; object-fit: contain; border-radius: 50%;">
+                <span>DINE</span>TECH
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView()">Devis</button>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="logo.png" alt="DineTech Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+            </div>
+            <h1>DineTech</h1>
+            <p>Création de sites web professionnels • Solutions digitales • Réparation informatique</p>
+            <p style="font-size: 1rem; color: var(--accent); font-weight: 600;">Agence Digital au Bénin 🇧🇯</p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView()">Voir nos Projets</button>
+                <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView()">Nous Contacter</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <h2 class="section-title">À Propos de DineTech</h2>
+        <p class="section-subtitle">Votre partenaire digital de confiance</p>
+        
+        <div class="about-content">
+            <div class="stat-card reveal">
+                <div class="stat-number">3+</div>
+                <div class="stat-text">ONG Majeures</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">5K+</div>
+                <div class="stat-text">Personnes Impactées</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">5+</div>
+                <div class="stat-text">Ans d'Expérience</div>
+            </div>
+        </div>
+
+        <div class="about-description reveal">
+            DineTech est une agence digitale basée à Djougou (Bénin), spécialisée dans la création de sites web professionnels, 
+            le développement graphique et les solutions informatiques. Nous avons accompagné des ONG nationales (JEDEC, FEJEB, Sabouyô) 
+            et des institutions locales dans leur transformation digitale. 
+            <br><br>
+            <strong>Notre mission :</strong> Mettre la technologie au service du développement communautaire et de l'entrepreneuriat local au Bénin.
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Nos Projets Réussis</h2>
+        <p class="section-subtitle">Sites web professionnels pour des ONG d'impact</p>
+
+        <div class="projects-grid">
+            <!-- JEDEC -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon">📱</div>
+                    <div class="project-title">JEDEC-ONG</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Développement communautaire au Bénin. Protection de l'enfance, VBG, DSSR et employabilité.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">ONG</span>
+                    </div>
+                    <a href="https://www.jedecong.org/" target="_blank" class="project-link">Visiter le site</a>
+                </div>
+            </div>
+
+            <!-- FEJEB -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon">👩‍👧‍👦</div>
+                    <div class="project-title">FEJEB-ONG</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Femmes, Enfants et Jeunes Épanouis du Bénin. Santé communautaire, éducation et autonomisation.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Design Modern</span>
+                        <span class="tag">Responsive</span>
+                        <span class="tag">SEO</span>
+                    </div>
+                    <a href="https://www.fejebong.org/" target="_blank" class="project-link">Visiter le site</a>
+                </div>
+            </div>
+
+            <!-- Sabouyô -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon">🌱</div>
+                    <div class="project-title">ONG Sabouyô</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Paix, environnement et développement durable à Djougou. Site en live + nom de domaine en cours.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Vercel Deploy</span>
+                        <span class="tag">Moderne</span>
+                        <span class="tag">Pro</span>
+                    </div>
+                    <a href="https://sabouyo.vercel.app/" target="_blank" class="project-link">Visiter le site</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS GALAXY -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Compétences & Expertise</h2>
+        <p class="section-subtitle">Les technologies que nous maîtrisons</p>
+
+        <div class="galaxy-container">
+            <div class="galaxy-center">
+                <img src="logo.png" alt="DineTech" style="width: 90%; height: 90%; object-fit: contain;">
+            </div>
+            
+            <div class="skill-orbit" style="width: 250px; height: 250px;"></div>
+            <div class="skill-star" style="top: 0%; left: 50%; transform: translate(-50%, -125px);">
+                💻
+                <div class="skill-label">Web Dev</div>
+            </div>
+            <div class="skill-star" style="top: 50%; left: 100%; transform: translate(-75px, -50%);">
+                🎨
+                <div class="skill-label">Design</div>
+            </div>
+            <div class="skill-star" style="top: 100%; left: 50%; transform: translate(-50%, -75px);">
+                ⚡
+                <div class="skill-label">Performance</div>
+            </div>
+            <div class="skill-star" style="top: 50%; left: 0%; transform: translate(-50%, -50%);">
+                🔧
+                <div class="skill-label">Maintenance</div>
+            </div>
+        </div>
+
+        <p style="color: var(--text-light); margin-top: 3rem; font-size: 1rem; line-height: 1.8;">
+            <strong>Stack Tech :</strong> HTML5 • CSS3 • JavaScript (Vanilla) • Responsive Design • SEO Optimization • 
+            <br>Graphic Design • IT Maintenance • Web Hosting (Vercel, Custom Domains)
+        </p>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <h2 class="section-title">Nos Services</h2>
+        <p class="section-subtitle">Solutions complètes pour votre transformation digitale</p>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">🌐</div>
+                <div class="service-name">Création de Sites Web</div>
+                <div class="service-description">
+                    Sites vitrines professionnels, responsifs, optimisés SEO et adaptés à tous les types d'organisations.
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🎨</div>
+                <div class="service-name">Design Graphique</div>
+                <div class="service-description">
+                    Logos, bannières, branding complet. Design moderne et mémorable pour votre identité visuelle.
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🔧</div>
+                <div class="service-name">Réparation Informatique</div>
+                <div class="service-description">
+                    Réparation téléphones/PC, maintenance, optimisation, récupération de données avec SAV.
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Optimisation Web</div>
+                <div class="service-description">
+                    Amélioration des performances, SEO complet, compatibilité multi-navigateurs.
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🌍</div>
+                <div class="service-name">Hébergement & Domaine</div>
+                <div class="service-description">
+                    Configuration d'hébergement, achat de domaine, déploiement et support technique.
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">📊</div>
+                <div class="service-name">Support & Maintenance</div>
+                <div class="service-description">
+                    Service après-vente, mises à jour régulières, dépannage prioritaire 24/7.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Commençons Votre Projet</h2>
+        <p class="section-subtitle">Contactez-nous pour un devis rapide et personnalisé</p>
+
+        <div class="contact-content">
+            <p class="contact-text">
+                Que vous soyez une ONG, une PME ou une institution, nous créons des solutions digitales 
+                sur mesure qui vous font gagner en visibilité et crédibilité. Envoyez-nous un message sur WhatsApp 
+                ou remplissez le formulaire ci-dessous.
+            </p>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <span>📞</span>
+                    <a href="https://wa.me/2290191175358?text=Bonjour%20DineTech%2C%20j%27aimerais%20discuter%20d%27un%20projet%20web" target="_blank">
+                        WhatsApp
+                    </a>
+                </div>
+                <div class="contact-method">
+                    <span>📍</span>
+                    <span>Djougou, Bénin</span>
+                </div>
+                <div class="contact-method">
+                    <span>⏰</span>
+                    <span>Disponible Tous les Jours</span>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="window.open('https://wa.me/2290191175358?text=Bonjour%20DineTech%2C%20j%27aimerais%20discuter%20d%27un%20projet%20web', '_blank')" style="font-size: 1.1rem; padding: 1.2rem 3rem;">
+                Envoyer un Message WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-credit">
+                © 2026 <strong>DineTech</strong> — Tous droits réservés
+                <br>
+                Agence Web Professionnelle basée à Djougou, Bénin
+            </div>
+            <div class="footer-credit">
+                Conçu et développé par <strong>Chérif-Dine</strong> | 
+                <a href="https://wa.me/2290191175358" target="_blank">Contactez DineTech</a>
+            </div>
+            <div class="footer-socials">
+                <a href="https://wa.me/2290191175358" target="_blank" class="social-link" title="WhatsApp">
+                    📲
+                </a>
+                <a href="#" class="social-link" title="Facebook" style="opacity: 0.5;">
+                    f
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== PARTICLES GENERATOR ==========
+        function generateParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = window.innerWidth > 768 ? 50 : 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 3 + 1;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 5;
+                const leftPos = Math.random() * 100;
+
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = leftPos + '%';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+
+                container.appendChild(particle);
+            }
+        }
+
+        // ========== SCROLL REVEAL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ========== SMOOTH SCROLL BEHAVIOR ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ========== STATS COUNTER ==========
+        function animateCounter(element, target, duration = 2000) {
+            let current = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : '');
+                }
+            }, 16);
+        }
+
+        // Animate counters when visible
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            const targetText = stat.textContent;
+            const target = parseInt(targetText);
+            
+            observer.observe(stat);
+            
+            const observer2 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(stat, target);
+                        observer2.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            observer2.observe(stat);
+        });
+
+        // ========== INIT ==========
+        generateParticles();
+
+        // Mobile menu improvements
+        if (window.innerWidth <= 768) {
+            document.querySelector('.nav-links')?.style.display === 'none';
+        }
+    </script>
+</body>
+</html>
